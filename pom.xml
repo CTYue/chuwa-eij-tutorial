@@ -20,6 +20,8 @@
         <module>maven-learn</module>
         <module>java-core</module>
         <module>stream-api-exercises</module>
+        <module>unit-testing</module>
+        <module>batch_processing</module>
     </modules>
 
     <properties>
