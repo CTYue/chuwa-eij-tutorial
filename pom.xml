@@ -22,6 +22,7 @@
         <module>stream-api-exercises</module>
         <module>unit-testing</module>
         <module>batch_processing</module>
+        <module>OOD</module>
     </modules>
 
     <properties>

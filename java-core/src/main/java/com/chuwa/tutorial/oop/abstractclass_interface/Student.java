@@ -19,6 +19,11 @@ public class Student extends Person{
         super.walk();
     }
 
+    public void walkable() {
+        super.walk();
+        super.meeting();
+    }
+
     @Override
     public void meeting() {
         super.meeting();
