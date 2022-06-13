@@ -1,7 +1,7 @@
 # Collection - Due  06/13/2022 17:00pm PST
 
 practice as the below sequence
-1. ArrayList - 
+1. ArrayList
 2. LinkedList
 3. CopyOnWriteArrayList
 4. HashSet
