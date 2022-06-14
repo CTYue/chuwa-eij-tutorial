@@ -1,9 +1,7 @@
 package com.chuwa.tutorial.java8.features.lambda;
 
-@FunctionalInterface
-public interface Baz {
-    String method(String string);
 
+public interface Baz {
     default String defaultBaz() {
         String s = "default Baz method";
         System.out.println(s);

@@ -1,6 +1,6 @@
 package com.chuwa.tutorial.basic.static_learn;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * @author b1go

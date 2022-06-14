@@ -43,6 +43,14 @@ public class LambdaLearn {
         System.out.println(hello);
     }
 
+    @Test
+    public void lambdaFoo2() {
+        Foo foo = parameter -> parameter.toUpperCase() + " from Foo";
+
+        String hello = foo.method("hello");
+        System.out.println(hello);
+    }
+
     /**
      * To solve this problem, we have two options. The first option is to use methods with different names:
      * String processWithCallable(Callable<String> c) throws Exception;
@@ -57,12 +65,22 @@ public class LambdaLearn {
 //        String result = processor.process((Callable<String>) () -> "abc");
     }
 
+    @Test
+    public void testFinal() {
+        final String localVariable = "Local";
+        Foo foo = parameter -> {
+            return parameter + " " + localVariable;
+        };
+
+        System.out.println(foo.method("hello"));
+    }
+
     /**
      * Use “Effectively Final” Variables
      * 当variable只赋值一次，没有任何变动的时候，Java默认是final。
      */
     @Test
-    public void testFinal() {
+    public void testEffectivelyFinal() {
         String localVariable = "Local";
         Foo foo = parameter -> {
             return parameter + " " + localVariable;
@@ -102,7 +120,4 @@ public class LambdaLearn {
 
         System.out.println(foo.method("hello"));
     }
-
-
-
 }

@@ -1,4 +1,4 @@
-# Collection - Due  06/13/2022 17:00pm PST
+# Collection
 
 practice as the below sequence
 1. ArrayList
