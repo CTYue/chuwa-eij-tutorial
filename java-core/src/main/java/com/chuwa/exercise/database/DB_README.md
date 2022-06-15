@@ -208,7 +208,7 @@
 | 20    | product_category_id | 商品的分类                  | bigint        |          |          |            |                                              |
 | 21    | product_attr        | 商品销售属性:[{"key":"颜色" | varchar(500)  |          |          |            | "value":"银色"},{"key":"容量","value":"4G"}] |
 
-## 1.4   Exercise 
+## Exercise 
 
 1. Create `oms_order` table 
 2. Insert some random data to `oms_order` table
@@ -238,6 +238,8 @@
 | 大于       | `{<key>:{$gt:<value>}}`  | `where likes > 50`             |
 | 大于或等于 | `{<key>:{$gte:<value>}}` | `where likes >= 50`            |
 | 不等于     | `{<key>:{$ne:<value>}}`  | `where likes != 50`            |
+
+## Exercise 
 
 1. Create `test`DB 
 2. Create `oms_order` collection  (method: createCollection() )
