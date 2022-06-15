@@ -31,17 +31,12 @@
 | ----- | ----------------------- | ------------------------------------------------------------ | ------------- | -------- | -------- | ---------- | ------------ |
 | 1     | id                      | 订单id                                                       | bigint        | √        |          |            |              |
 | 2     | member_id               | 会员id                                                       | bigint        |          |          |            |              |
-| 3     | coupon_id               | 优惠券id                                                     | bigint        |          |          |            |              |
 | 4     | order_sn                | 订单编号                                                     | varchar(64)   |          |          |            |              |
 | 5     | create_time             | 提交时间                                                     | DATETIME      |          |          |            |              |
 | 6     | member_username         | 用户帐号                                                     | varchar(64)   |          |          |            |              |
 | 7     | total_amount            | 订单总金额                                                   | decimal(10,2) |          |          |            |              |
 | 8     | pay_amount              | 应付金额（实际支付金额）                                     | decimal(10,2) |          |          |            |              |
 | 9     | freight_amount          | 运费金额                                                     | decimal(10,2) |          |          |            |              |
-| 10    | promotion_amount        | 促销优化金额（促销价、满减、阶梯价）                         | decimal(10,2) |          |          |            |              |
-| 11    | integration_amount      | 积分抵扣金额                                                 | decimal(10,2) |          |          |            |              |
-| 12    | coupon_amount           | 优惠券抵扣金额                                               | decimal(10,2) |          |          |            |              |
-| 13    | discount_amount         | 管理员后台调整订单使用的折扣金额                             | decimal(10,2) |          |          |            |              |
 | 14    | pay_type                | 支付方式：0->未支付；1->支付宝；2->微信                      | int(1)        |          |          |            |              |
 | 15    | source_type             | 订单来源：0->PC订单；1->app订单                              | int(1)        |          |          |            |              |
 | 16    | status                  | 订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单 | int(1)        |          |          |            |              |
@@ -49,14 +44,7 @@
 | 18    | delivery_company        | 物流公司(配送方式)                                           | varchar(64)   |          |          |            |              |
 | 19    | delivery_sn             | 物流单号                                                     | varchar(64)   |          |          |            |              |
 | 20    | auto_confirm_day        | 自动确认时间（天）                                           | INT           |          |          |            |              |
-| 21    | integration             | 可以获得的积分                                               | INT           |          |          |            |              |
-| 22    | growth                  | 可以活动的成长值                                             | INT           |          |          |            |              |
-| 23    | promotion_info          | 活动信息                                                     | varchar(100)  |          |          |            |              |
 | 24    | bill_type               | 发票类型：0->不开发票；1->电子发票；2->纸质发票              | int(1)        |          |          |            |              |
-| 25    | bill_header             | 发票抬头                                                     | varchar(200)  |          |          |            |              |
-| 26    | bill_content            | 发票内容                                                     | varchar(200)  |          |          |            |              |
-| 27    | bill_receiver_phone     | 收票人电话                                                   | VARCHAR(32)   |          |          |            |              |
-| 28    | bill_receiver_email     | 收票人邮箱                                                   | varchar(64)   |          |          |            |              |
 | 29    | receiver_name           | 收货人姓名                                                   | varchar(100)  |          |          |            |              |
 | 30    | receiver_phone          | 收货人电话                                                   | VARCHAR(32)   |          |          |            |              |
 | 31    | receiver_post_code      | 收货人邮编                                                   | VARCHAR(32)   |          |          |            |              |
@@ -67,7 +55,6 @@
 | 36    | note                    | 订单备注                                                     | varchar(500)  |          |          |            |              |
 | 37    | confirm_status          | 确认收货状态：0->未确认；1->已确认                           | int(1)        |          |          |            |              |
 | 38    | delete_status           | 删除状态：0->未删除；1->已删除                               | int(1)        |          |          |            |              |
-| 39    | use_integration         | 下单时使用的积分                                             | INT           |          |          |            |              |
 | 40    | payment_time            | 支付时间                                                     | DATETIME      |          |          |            |              |
 | 41    | delivery_time           | 发货时间                                                     | DATETIME      |          |          |            |              |
 | 42    | receive_time            | 确认收货时间                                                 | DATETIME      |          |          |            |              |
@@ -94,13 +81,6 @@
 | 14    | sp1                 | 商品的销售属性1             | varchar(100)  |          |          |            |                                              |
 | 15    | sp2                 | 商品的销售属性2             | varchar(100)  |          |          |            |                                              |
 | 16    | sp3                 | 商品的销售属性3             | varchar(100)  |          |          |            |                                              |
-| 17    | promotion_name      | 商品促销名称                | varchar(200)  |          |          |            |                                              |
-| 18    | promotion_amount    | 商品促销分解金额            | decimal(10,2) |          |          |            |                                              |
-| 19    | coupon_amount       | 优惠券优惠分解金额          | decimal(10,2) |          |          |            |                                              |
-| 20    | integration_amount  | 积分优惠分解金额            | decimal(10,2) |          |          |            |                                              |
-| 21    | real_amount         | 该商品经过优惠后的分解金额  | decimal(10,2) |          |          |            |                                              |
-| 22    | gift_integration    | 商品赠送积分                | INT           |          |          |            |                                              |
-| 23    | gift_growth         | 商品赠送成长值              | INT           |          |          |            |                                              |
 | 24    | product_attr        | 商品销售属性:[{"key":"颜色" | varchar(500)  |          |          |            | "value":"颜色"},{"key":"容量","value":"4G"}] |
 
 ### 1.3.3   oms_order_operate_history [订单操作记录表]
@@ -119,7 +99,6 @@
 | **#** | **字段**              | **名称**                     | **数据类型** | **主键** | **非空** | **默认值** | **备注说明**       |
 | ----- | --------------------- | ---------------------------- | ------------ | -------- | -------- | ---------- | ------------------ |
 | 1     | id                    | id                           | bigint       | √        |          |            |                    |
-| 2     | flash_order_overtime  | 秒杀订单超时关闭时间(分)     | INT          |          |          |            |                    |
 | 3     | normal_order_overtime | 正常订单超时时间(分)         | INT          |          |          |            |                    |
 | 4     | confirm_overtime      | 发货后自动确认收货时间（天） | INT          |          |          |            |                    |
 | 5     | finish_overtime       | 自动完成交易时间             | INT          |          |          |            | 不能申请售后（天） |
@@ -245,6 +224,6 @@
 2. Create `oms_order` collection  (method: createCollection() )
 3. Insert few random entries to `oms_order` collection (method: insert() )
 4. Read one entry from `oms_order` collection (method: find() )
-5. Read all entries from `oms_order` collection (method: find() )
+5. Read all entries from `oms_order` c@@ollection (method: find() )
 6. Update one entry from `oms_order`collection (method: update() or save() )
 7. Remove one entry from `oms_order`collection (method: remove() )
