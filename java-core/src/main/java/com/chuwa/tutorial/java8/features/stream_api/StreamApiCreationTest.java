@@ -1,6 +1,6 @@
 package com.chuwa.tutorial.java8.features.stream_api;
 
-import com.chuwa.tutorial.java8.pojos.Employee;
+import com.chuwa.tutorial.common.pojos.Employee;
 import org.junit.Test;
 
 import java.util.Arrays;

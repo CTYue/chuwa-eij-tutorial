@@ -1,4 +1,4 @@
-package com.chuwa.tutorial.java8.pojos;
+package com.chuwa.tutorial.common.pojos;
 
 /**
  * @author Yanan Lyu

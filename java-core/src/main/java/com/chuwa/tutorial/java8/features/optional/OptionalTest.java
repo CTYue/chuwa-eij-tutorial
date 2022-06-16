@@ -1,7 +1,7 @@
 package com.chuwa.tutorial.java8.features.optional;
 
 
-import com.chuwa.tutorial.java8.pojos.Employee;
+import com.chuwa.tutorial.common.pojos.Employee;
 import org.junit.Test;
 
 import java.util.Optional;

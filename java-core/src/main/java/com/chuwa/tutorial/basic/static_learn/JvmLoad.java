@@ -1,7 +1,7 @@
 package com.chuwa.tutorial.basic.static_learn;
 
-import com.chuwa.tutorial.java8.pojos.Employee;
-import com.chuwa.tutorial.java8.utils.EmployeeData;
+import com.chuwa.tutorial.common.pojos.Employee;
+import com.chuwa.tutorial.common.utils.EmployeeData;
 
 import java.util.HashSet;
 import java.util.Set;

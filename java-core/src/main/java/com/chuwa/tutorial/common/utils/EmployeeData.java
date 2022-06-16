@@ -1,7 +1,7 @@
-package com.chuwa.tutorial.java8.utils;
+package com.chuwa.tutorial.common.utils;
 
 
-import com.chuwa.tutorial.java8.pojos.Employee;
+import com.chuwa.tutorial.common.pojos.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

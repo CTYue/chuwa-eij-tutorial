@@ -1,8 +1,8 @@
 package com.chuwa.tutorial.java8.features.lambda;
 
 
-import com.chuwa.tutorial.java8.pojos.Employee;
-import com.chuwa.tutorial.java8.utils.EmployeeData;
+import com.chuwa.tutorial.common.pojos.Employee;
+import com.chuwa.tutorial.common.utils.EmployeeData;
 import org.junit.Test;
 
 import java.util.List;
