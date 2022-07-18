@@ -17,11 +17,10 @@
     </parent>
 
     <modules>
-        <module>maven-learn</module>
-        <module>java-core</module>
-        <module>stream-api-exercises</module>
-        <module>unit-testing</module>
-        <module>batch_processing</module>
+        <module>01-maven-learn</module>
+        <module>02-java-core</module>
+        <module>03-stream-api-exercises</module>
+        <module>04-batch-processing</module>
         <module>OOD</module>
     </modules>
 
