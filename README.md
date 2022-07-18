@@ -1,5 +1,4 @@
 # Chuwa Everything In Java
 
-Topics will be devided to different modules.
-
-Small contents are devided to packages
+* modules -> topic/tech stack.
+* packages -> subtopics
