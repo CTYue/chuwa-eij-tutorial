@@ -1,4 +1,4 @@
-package com.chuwa.tutorial.t08_multithreading.deadlock;
+package com.chuwa.tutorial.t08_multithreading.c04_deadlock;
 
 /**
  * 如果没有deadlock，while(true)里的数值会一直变下去。

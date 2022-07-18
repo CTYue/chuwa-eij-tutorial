@@ -1,4 +1,4 @@
-package com.chuwa.tutorial.t08_multithreading.syncronized;
+package com.chuwa.tutorial.t08_multithreading.c03_syncronized;
 
 /**
  * @author Yanan Lyu

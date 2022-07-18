@@ -1,4 +1,4 @@
-package com.chuwa.tutorial.t08_multithreading.waitNotify;
+package com.chuwa.tutorial.t08_multithreading.c05_waitNotify;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

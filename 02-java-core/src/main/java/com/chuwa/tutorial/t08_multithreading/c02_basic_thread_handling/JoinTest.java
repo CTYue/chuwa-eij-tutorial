@@ -1,4 +1,4 @@
-package com.chuwa.tutorial.t08_multithreading.basic_thread_handling;
+package com.chuwa.tutorial.t08_multithreading.c02_basic_thread_handling;
 
 /**
  * @author b1go

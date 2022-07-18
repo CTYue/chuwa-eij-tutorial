@@ -1,8 +1,8 @@
 package com.chuwa.tutorial.t01_basic;
 
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * @author b1go
@@ -18,7 +18,7 @@ public class StringConstantPoolTest {
         String s1 = "Cat";
         String s2 = "Cat";
         String s3 = s1;
-        Assertions.assertEquals(s1, s2);
+        Assert.assertEquals(s1, s2);
         // true
         System.out.println(s1 == s2);
         // true
@@ -33,7 +33,7 @@ public class StringConstantPoolTest {
         String s1 = new String("Cat");
         String s2 = new String("Cat");
         String s3 = s1;
-        Assertions.assertEquals(s1, s2);
+        Assert.assertEquals(s1, s2);
         // false
         System.out.println(s1 == s2);
         // true
