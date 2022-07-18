@@ -1,4 +1,4 @@
-package com.chuwa.tutorial.t08_multithreading.executor_framework;
+package com.chuwa.tutorial.t08_multithreading.c07_executor_framework;
 
 import java.util.concurrent.Executor;
 
