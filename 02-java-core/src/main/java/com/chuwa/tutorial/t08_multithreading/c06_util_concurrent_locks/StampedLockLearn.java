@@ -1,4 +1,4 @@
-package com.chuwa.tutorial.t08_multithreading.util_concurrent;
+package com.chuwa.tutorial.t08_multithreading.c06_util_concurrent_locks;
 
 import java.util.concurrent.locks.StampedLock;
 
