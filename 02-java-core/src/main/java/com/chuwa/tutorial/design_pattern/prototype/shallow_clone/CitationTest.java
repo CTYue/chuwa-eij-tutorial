@@ -1,4 +1,4 @@
-package design_pattern.prototype.shallow_clone;
+package com.chuwa.tutorial.design_pattern.prototype.shallow_clone;
 
 /**
  * @author ylyu

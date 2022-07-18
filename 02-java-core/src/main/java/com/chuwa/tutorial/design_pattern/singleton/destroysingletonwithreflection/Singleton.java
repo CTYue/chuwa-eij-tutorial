@@ -1,4 +1,4 @@
-package design_pattern.singleton.destroysingletonwithreflection;
+package com.chuwa.tutorial.design_pattern.singleton.destroysingletonwithreflection;
 
 /**
  * Double Check

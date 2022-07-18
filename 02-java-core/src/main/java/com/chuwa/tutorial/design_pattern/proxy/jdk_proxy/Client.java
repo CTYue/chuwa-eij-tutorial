@@ -1,4 +1,4 @@
-package design_pattern.proxy.jdk_proxy;
+package com.chuwa.tutorial.design_pattern.proxy.jdk_proxy;
 
 /**
  * @author ylyu

@@ -1,4 +1,4 @@
-package design_pattern.observer;
+package com.chuwa.tutorial.design_pattern.observer;
 
 import java.util.ArrayList;
 import java.util.List;

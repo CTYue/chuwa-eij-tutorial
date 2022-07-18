@@ -1,4 +1,4 @@
-package design_pattern.factory.simplefactory.coffee;
+package com.chuwa.tutorial.design_pattern.factory.simplefactory.coffee;
 
 /**
  * @author ylyu

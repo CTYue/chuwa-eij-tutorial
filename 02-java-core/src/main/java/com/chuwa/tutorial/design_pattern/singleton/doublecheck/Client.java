@@ -1,4 +1,4 @@
-package design_pattern.singleton.doublecheck;
+package com.chuwa.tutorial.design_pattern.singleton.doublecheck;
 
 /**
  * @author ylyu

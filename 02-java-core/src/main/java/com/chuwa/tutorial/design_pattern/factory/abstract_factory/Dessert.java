@@ -1,4 +1,4 @@
-package design_pattern.factory.abstract_factory;
+package com.chuwa.tutorial.design_pattern.factory.abstract_factory;
 
 /**
  * @author ylyu

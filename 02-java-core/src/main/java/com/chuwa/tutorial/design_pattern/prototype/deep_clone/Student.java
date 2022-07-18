@@ -1,4 +1,4 @@
-package design_pattern.prototype.deep_clone;
+package com.chuwa.tutorial.design_pattern.prototype.deep_clone;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package design_pattern.factory.config_factory;
+package com.chuwa.tutorial.design_pattern.factory.config_factory;
 
 import java.io.IOException;
 import java.io.InputStream;

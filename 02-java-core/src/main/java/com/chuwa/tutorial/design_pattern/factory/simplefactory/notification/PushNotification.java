@@ -1,4 +1,4 @@
-package design_pattern.factory.simplefactory.notification;
+package com.chuwa.tutorial.design_pattern.factory.simplefactory.notification;
 
 /**
  * @author Yanan Lyu

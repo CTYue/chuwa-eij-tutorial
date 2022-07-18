@@ -1,11 +1,11 @@
-package design_pattern.observer;
+package com.chuwa.tutorial.design_pattern.observer;
 
 /**
  * @author Yanan Lyu
  * @date 2/22/22 8:46 PM
  * @description 具体观察者角色
  */
-public class WeiXinUser implements Observer{
+public class WeiXinUser implements Observer {
     private String name;
 
     public WeiXinUser(String name) {

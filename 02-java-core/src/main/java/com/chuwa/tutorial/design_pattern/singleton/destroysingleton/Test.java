@@ -1,4 +1,4 @@
-package design_pattern.singleton.destroysingleton;
+package com.chuwa.tutorial.design_pattern.singleton.destroysingleton;
 
 import java.io.*;
 

@@ -1,4 +1,4 @@
-package design_pattern.proxy.cglib_proxy;
+package com.chuwa.tutorial.design_pattern.proxy.cglib_proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

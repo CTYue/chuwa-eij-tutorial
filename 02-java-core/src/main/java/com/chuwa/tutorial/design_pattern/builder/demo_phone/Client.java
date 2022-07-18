@@ -1,4 +1,4 @@
-package design_pattern.builder.demo_phone;
+package com.chuwa.tutorial.design_pattern.builder.demo_phone;
 
 /**
  * @author ylyu

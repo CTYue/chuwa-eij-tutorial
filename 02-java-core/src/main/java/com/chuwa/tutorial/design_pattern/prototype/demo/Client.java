@@ -1,4 +1,4 @@
-package design_pattern.prototype.demo;
+package com.chuwa.tutorial.design_pattern.prototype.demo;
 
 /**
  * @author ylyu

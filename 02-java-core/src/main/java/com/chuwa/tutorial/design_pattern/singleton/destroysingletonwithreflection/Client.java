@@ -1,4 +1,4 @@
-package design_pattern.singleton.destroysingletonwithreflection;
+package com.chuwa.tutorial.design_pattern.singleton.destroysingletonwithreflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -1,4 +1,4 @@
-package design_pattern.builder.demo_bike;
+package com.chuwa.tutorial.design_pattern.builder.demo_bike;
 
 /**
  * @author ylyu
