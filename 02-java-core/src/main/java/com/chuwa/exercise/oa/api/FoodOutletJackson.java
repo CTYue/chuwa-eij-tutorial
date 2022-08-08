@@ -49,6 +49,8 @@ public class FoodOutletJackson {
 
         // get total_pages
         FoodOutlet foodOutlet = objectMapper.readValue(resBody, FoodOutlet.class);
+        String s = objectMapper.writeValueAsString(foodOutlet);
+        System.out.println(s);
 
         int total_pages = foodOutlet.getTotal_pages();
 
