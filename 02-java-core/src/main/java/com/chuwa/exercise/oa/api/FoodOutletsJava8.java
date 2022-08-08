@@ -1,18 +1,18 @@
 package com.chuwa.exercise.oa.api;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.*;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.time.Duration;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author b1go
@@ -23,15 +23,17 @@ import java.util.Map;
  *  2, Gson: import com.google.gson.*;
  *      not selected: JackSon: import com.fasterxml.jackson.databind.ObjectMapper;  -> objectMapper.readValue(s, FoodOutlets.class) food -> food.getEstimatedCost() <= maxCost -> food.getName;
  *  3, if "estimated_cost" < maxCost  -> "name"
+ *
+ *  Java 8 版本
  */
-public class FoodOutlets {
+public class FoodOutletsJava8 {
 
     public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException {
-        List<String> seattle = FoodOutlets.getRelevantFoodOutlets11("Seattle", 140);
+        List<String> seattle = FoodOutletsJava8.getRelevantFoodOutlets11("Seattle", 140);
         System.out.println(seattle);
     }
 
-    public static List<String> getRelevantFoodOutlets11(String city, int maxCost) throws IOException, URISyntaxException, InterruptedException {
+    public static List<String> getRelevantFoodOutlets11(String city, int maxCost) throws IOException {
         List<String> res = new ArrayList<>();
 
         String BASE_URL = "https://jsonmock.hackerrank.com/api/food_outlets?city=" + city;
@@ -44,7 +46,8 @@ public class FoodOutlets {
         res.addAll(strings);
 
         // get total_pages
-        JsonObject jsonBody = (JsonObject) JsonParser.parseString(resBody);
+        JsonObject jsonBody = new JsonParser().parse(resBody).getAsJsonObject();
+
         int total_pages = Integer.parseInt(jsonBody.get("total_pages").getAsString());
 
         // 处理剩余page: 2 - last page
@@ -58,40 +61,22 @@ public class FoodOutlets {
         return res;
     }
 
-    private static String callURL(String URL_Addr) throws IOException, InterruptedException, URISyntaxException {
-        // define httpClient;
-        HttpClient httpClient = HttpClient.newBuilder().build();
-        // define a HttpRequest
-        HttpRequest request = HttpRequest.newBuilder(new URI(URL_Addr))
-                // 设置Header:
-                .header("User-Agent", "Java HttpClient").header("Accept", "*/*")
-                // 设置超时:
-                .timeout(Duration.ofSeconds(5))
-                // 设置版本:
-                .version(HttpClient.Version.HTTP_2).build();
+    private static String callURL(String URL_Addr) throws IOException {
+        URL url = new URL(URL_Addr);
 
-        // call api
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-
-        // HTTP允许重复的Header，因此一个Header可对应多个Value:
-        Map<String, List<String>> headers = response.headers().map();
-        for (String header : headers.keySet()) {
-            System.out.println(header + ": " + headers.get(header).get(0));
-        }
-
-        // check status code
-        if (response.statusCode() != 200) {
-            throw new RuntimeException("bad response");
-        }
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        BufferedReader br = new BufferedReader(new
+                InputStreamReader(con.getInputStream()));
+        String line = br.readLine();
 
         // only return response body
-        return response.body();
+        return line;
     }
 
     private static List<String> processData(String resBody, int maxCost) {
         List<String> res = new ArrayList<>();
 
-        JsonObject jsonBody = (JsonObject) JsonParser.parseString(resBody);
+        JsonObject jsonBody = new JsonParser().parse(resBody).getAsJsonObject();
 
         JsonArray jsonArray = jsonBody.get("data").getAsJsonArray();
         jsonArray.forEach(d -> {
