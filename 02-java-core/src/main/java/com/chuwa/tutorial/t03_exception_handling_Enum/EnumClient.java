@@ -10,10 +10,11 @@ public class EnumClient {
 
     @Test
     public void testSeason() {
-        for (Season s : Season.values()) {
-            System.out.println(s);
-            System.out.println(s.name());
-            System.out.println(s.ordinal());
+        //enumerate all elements
+        for (Season season : Season.values()) {
+            System.out.println(season);
+//            System.out.println(season.name()); //Key
+            System.out.println(season.ordinal()); //index of the enum
         }
     }
 

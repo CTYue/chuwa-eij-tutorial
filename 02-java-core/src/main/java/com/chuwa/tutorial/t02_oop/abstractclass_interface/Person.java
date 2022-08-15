@@ -18,7 +18,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public abstract boolean signUp();
+    public Person(){
+        System.out.println("Person non-arguments construtor");
+    }
+
+    public abstract boolean signUp(); //???
 
     public void walk() {
         System.out.println("People Walk");

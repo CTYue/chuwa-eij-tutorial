@@ -9,6 +9,8 @@ public class Student extends Person{
         super(name, phoneNumber);
     }
 
+    public Student(){}
+
     @Override
     public boolean signUp() {
         return false;
@@ -24,8 +26,8 @@ public class Student extends Person{
         super.meeting();
     }
 
-    @Override
-    public void meeting() {
-        super.meeting();
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.meeting();
     }
 }
