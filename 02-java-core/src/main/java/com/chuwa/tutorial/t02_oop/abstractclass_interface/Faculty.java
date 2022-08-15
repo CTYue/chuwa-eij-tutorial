@@ -15,4 +15,8 @@ public class Faculty extends Person {
     }
 
     // show override unforced methods
+    @Override
+    public void walk() {
+        super.walk();
+    }
 }
