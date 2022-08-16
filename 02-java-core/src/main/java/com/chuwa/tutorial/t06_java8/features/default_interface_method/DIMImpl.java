@@ -1,6 +1,6 @@
 package com.chuwa.tutorial.t06_java8.features.default_interface_method;
 
-public class DIMImpl implements DIMLearn {
+public class DIMImpl implements DIML {
 
     /**
      *   只需要override add, substract 是default方法，不override也不会报错。

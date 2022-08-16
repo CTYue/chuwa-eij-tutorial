@@ -33,6 +33,7 @@ public class LambdaLearn {
 
         String hello = fooByIC.method("hello");
         System.out.println(hello);
+        fooByIC.defaultBaz();
     }
 
     @Test
@@ -95,7 +96,7 @@ public class LambdaLearn {
     @Test
     public void testFinal2() {
         String localVariable = "Local";
-        localVariable = "LOCAL";
+        localVariable = "LOCAL"; // 新的内存地址
 
         Foo foo = parameter -> {
 //            return parameter + " " + localVariable;

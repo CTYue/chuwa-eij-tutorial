@@ -1,6 +1,6 @@
 package com.chuwa.tutorial.t06_java8.features.default_interface_method;
 
-public interface DIMLearn {
+public interface DIML {
     static final String BLOG = "is Chuwa a";
 
     int add(int a, int b);

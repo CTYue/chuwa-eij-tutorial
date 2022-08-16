@@ -117,7 +117,7 @@ public class StreamApiIntermediateOperation {
         listsOfStrings.add(lists1);
         listsOfStrings.add(lists2);
 
-        // listOfStrings是 [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
+        // listOfStrings是 [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]  -> [1,2,3,4,5,6,7,8,9]
         System.out.println("listsOfStrings: " + listsOfStrings);
 
         System.out.println("****** 使用map ********");
@@ -160,6 +160,9 @@ public class StreamApiIntermediateOperation {
                 .filter(e -> e % 2 == 0)
                 .map(e -> e * 10)
                 .collect(Collectors.toList()));
+
+        long count = list2.stream().filter(e -> e % 2 == 0).count();
+        System.out.println(count);
         System.out.println(list1);
     }
 
