@@ -22,7 +22,9 @@ public class OddEventPrinter {
                     System.out.println(Thread.currentThread().getName() + ": " + value++);
                     monitor.notify();
                     try {
-                        monitor.wait();
+                        if (value < 11) {
+                            monitor.wait();
+                        }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

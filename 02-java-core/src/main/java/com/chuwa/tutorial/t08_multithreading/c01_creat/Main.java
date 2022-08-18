@@ -13,7 +13,8 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         // use extends thread
         Thread t = new MyThread();
-        t.start();
+        t.start(); // -> create a new thread then run the task in the new thread.
+        // t.run(); // -> run task in current process/thread
         System.out.println("***********");
 
         // use implements Runnable

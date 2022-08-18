@@ -20,7 +20,7 @@ class MaximumGenericTest {
     /**
      * determines the largest of three Comparable objects
      */
-    public static < T extends Comparable < T >> T maximum(T x, T y, T z) {
+    public static < T extends Comparable<T>> T maximum(T x, T y, T z) {
         T max = x;
 
         if (y.compareTo(max) > 0) {
