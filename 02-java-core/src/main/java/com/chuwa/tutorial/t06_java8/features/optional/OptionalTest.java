@@ -61,7 +61,22 @@ public class OptionalTest {
         System.out.println(optional2);
 
         // remember type is not Optional, it is Employee
-        Employee optional3 = Optional.ofNullable(employee).orElse(new Employee(1, "JCole", 30, 6666));
-        System.out.println(optional3);
+        Employee employee1 = Optional.ofNullable(employee).orElse(new Employee(1, "JCole", 30, 6666));
+        System.out.println(employee1);
+    }
+
+    @Test
+    public void testOrElseThrow() {
+        Employee employee = new Employee();
+        Optional<Employee> optional = Optional.ofNullable(employee);
+        System.out.println(optional);
+
+        employee = null;
+        Optional<Employee> optional2 = Optional.ofNullable(employee);
+        System.out.println(optional2);
+
+        // remember type is not Optional, it is Employee
+        Employee employee1 = Optional.ofNullable(employee).orElseThrow(() -> new RuntimeException("Wow Exception"));
+        System.out.println(employee1);
     }
 }
