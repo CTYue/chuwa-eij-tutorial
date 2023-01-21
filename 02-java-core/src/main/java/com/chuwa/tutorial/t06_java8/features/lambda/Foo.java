@@ -1,12 +1,17 @@
 package com.chuwa.tutorial.t06_java8.features.lambda;
 
 @FunctionalInterface
-public interface Foo extends Baz, Bar {
+public interface Foo {
+    String aMethod(String string);
 
-    @Override
+    default String defaultBar() {
+        String s = "default Bar method";
+        System.out.println(s);
+        return s;
+    }
+
     default String defaultCommon() {
-//        return Baz.super.defaultCommon();
-        String s = "defaultCommon from Foo";
+        String s = "defaultCommon from Bar";
         System.out.println(s);
         return s;
     }

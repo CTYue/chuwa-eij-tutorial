@@ -23,47 +23,38 @@ public class LambdaLearn {
 
     @Test
     public void overrideFoo() {
-//        Foo fooByIC = new Foo();
+        // Before Java 8, we can use Anonymous Class to override this method
+        // Interface var = new Class
+        // List<Integer> var = new ArrayList<>()
+        // Foo 这个interface有一个abstract method, 所以在Anonymous Class里需要override来提供method body
         Foo fooByIC = new Foo() {
             @Override
-            public String method(String string) {
+            public String aMethod(String string) {
                 return string + " from Foo";
             }
         };
 
-        String hello = fooByIC.method("hello");
+        String hello = fooByIC.aMethod("hello");
         System.out.println(hello);
-        fooByIC.defaultBaz();
     }
 
     @Test
     public void lambdaFoo() {
+        // Foo.aMethod() 是abstract method,缺少method body. lambda 提供method body.
+        // 比Anonymous class 简洁很多。
         Foo foo = parameter -> parameter + " from Foo";
 
-        String hello = foo.method("hello");
+        String hello = foo.aMethod("hello");
         System.out.println(hello);
     }
 
     @Test
     public void lambdaFoo2() {
+        // 可以提供任何method body
         Foo foo = parameter -> parameter.toUpperCase() + " from Foo";
 
-        String hello = foo.method("hello");
+        String hello = foo.aMethod("hello");
         System.out.println(hello);
-    }
-
-    /**
-     * To solve this problem, we have two options. The first option is to use methods with different names:
-     * String processWithCallable(Callable<String> c) throws Exception;
-
-     * String processWithSupplier(Supplier<String> s);
-     * @throws Exception
-     */
-    @Test
-    public void testOverload() throws Exception {
-        Processor processor = new ProcessorImpl();
-//        String result = processor.process(() -> "abc");
-//        String result = processor.process((Callable<String>) () -> "abc");
     }
 
     @Test
@@ -73,12 +64,13 @@ public class LambdaLearn {
             return parameter + " " + localVariable;
         };
 
-        System.out.println(foo.method("hello"));
+        System.out.println(foo.aMethod("hello"));
     }
 
     /**
      * Use “Effectively Final” Variables
      * 当variable只赋值一次，没有任何变动的时候，Java默认是final。
+     * 注意，在lambda expression的前后都不能被改变
      */
     @Test
     public void testEffectivelyFinal() {
@@ -87,14 +79,14 @@ public class LambdaLearn {
             return parameter + " " + localVariable;
         };
 
-        System.out.println(foo.method("hello"));
+        System.out.println(foo.aMethod("hello"));
     }
 
     /**
-     * 换object会报错
+     * 换object会报错，因为换了内存地址
      */
     @Test
-    public void testFinal2() {
+    public void testFinal21() {
         String localVariable = "Local";
         localVariable = "LOCAL"; // 新的内存地址
 
@@ -103,7 +95,21 @@ public class LambdaLearn {
             return parameter;
         };
 
-        System.out.println(foo.method("hello"));
+        System.out.println(foo.aMethod("hello"));
+    }
+
+    @Test
+    public void testFinal22() {
+        String localVariable = "Local";
+
+        Foo foo = parameter -> {
+//            return parameter + " " + localVariable;
+            return parameter;
+        };
+
+        localVariable = "LOCAL"; // 新的内存地址
+
+        System.out.println(foo.aMethod("hello"));
     }
 
     /**
@@ -119,6 +125,6 @@ public class LambdaLearn {
             return parameter + " " + employee;
         };
 
-        System.out.println(foo.method("hello"));
+        System.out.println(foo.aMethod("hello"));
     }
 }
