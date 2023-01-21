@@ -31,11 +31,11 @@ public class StreamApiEndOperation {
      * 7, max(Comparator c) - 返回流中的最大值
      * 8, min(Comparator c) - 返回流中的最小值
      * 9, forEach(Consumer c) - 内部迭代
-     *
+     * <p>
      * 二，归约
      * 1, reduce(T identity, BinaryOperator) - 可以将流中的元素反复结合起来，得到一个值
      * 2, reduce(BinaryOperator) - 可以将流中的元素反复结合起来，得到一个值
-     *
+     * <p>
      * 三， 收集
      * 1, collect(Collector c)
      */
@@ -158,7 +158,6 @@ public class StreamApiEndOperation {
 
     /**
      * map是必须要有return的
-     *
      */
     @Test
     public void testChain() {
@@ -193,4 +192,32 @@ public class StreamApiEndOperation {
                 .reduce(Integer::sum);
         System.out.println(reduce1.get());
     }
+
+    /**
+     * 获得员工中，男性员工中最高工资的人，以及女性员工中最高工资的人
+     */
+    @Test
+    public void testGroupBy() {
+        Map<String, Optional<Employee>> collect = EMPLOYEES
+                .stream()
+                .collect(Collectors
+                        .groupingBy(
+                                Employee::getGender,
+                                Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
+        System.out.println("male max salary: " + collect.get("male"));
+        System.out.println("female max salary: " + collect.get("female"));
+    }
+
+    /**
+     * 构建一个map, key是员工ID，value是员工的工资。
+     */
+    @Test
+    public void testToMap() {
+        Map<Integer, Double> collect = EMPLOYEES.stream()
+                .collect(Collectors.toMap(
+                        Employee::getId,
+                        Employee::getSalary
+                ));
+    }
 }
+

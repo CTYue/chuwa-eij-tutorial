@@ -10,6 +10,8 @@ public class Employee {
     private int age;
     private double salary;
 
+    private String gender;
+
     public Employee() {
     }
 
@@ -18,6 +20,11 @@ public class Employee {
         this.name = name;
         this.age = age;
         this.salary = salary;
+    }
+
+    public Employee(int id, String name, int age, double salary, String gender) {
+        this(id, name, age, salary);
+        this.gender = gender;
     }
 
     public int getId() {
@@ -52,6 +59,14 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -59,6 +74,7 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", salary=" + salary +
+                ", gender='" + gender + '\'' +
                 '}';
     }
 }
