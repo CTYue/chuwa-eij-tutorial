@@ -43,6 +43,18 @@ public class StreamApiEndOperation {
     private static final List<Employee> EMPLOYEES = EmployeeData.getEmployees();
 
     /**
+     * collect最重要
+     */
+    @Test
+    public void testCollect() {
+        List<Employee> collect = EMPLOYEES.stream().filter(e -> e.getId() > 1002).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+
+        Set<Employee> collect2 = EMPLOYEES.stream().filter(e -> e.getId() > 1002).collect(Collectors.toSet());
+        collect2.forEach(System.out::println);
+    }
+
+    /**
      * 1， allMatch(Predicate p) - 检查是否匹配所有的元素
      * 2， anyMatch(Predicate p) - 检查是否至少匹配一个元素
      * 3， noneMatch(Predicate p) - 检查是否没有匹配的元素
@@ -144,15 +156,6 @@ public class StreamApiEndOperation {
         System.out.println(reduce2.get());
     }
 
-    @Test
-    public void testCollect() {
-        List<Employee> collect = EMPLOYEES.stream().filter(e -> e.getId() > 1002).collect(Collectors.toList());
-        collect.forEach(System.out::println);
-
-        Set<Employee> collect2 = EMPLOYEES.stream().filter(e -> e.getId() > 1002).collect(Collectors.toSet());
-        collect2.forEach(System.out::println);
-    }
-
     /**
      * map是必须要有return的
      *
@@ -176,5 +179,18 @@ public class StreamApiEndOperation {
                 })
                 .reduce(Integer::sum);
         System.out.println(reduce.get());
+
+        // 在终止操作后，可以继续跟一个新的.stream()来构建chain.
+        Optional<Integer> reduce1 = EMPLOYEES.stream()
+                .filter(e -> e.getAge() < 40)
+                .collect(Collectors.toList())
+                .stream()
+                .map(e -> e.getSalary() * 0.8)
+                .map(e -> {
+                    System.out.println(e);
+                    return e.intValue();
+                })
+                .reduce(Integer::sum);
+        System.out.println(reduce1.get());
     }
 }

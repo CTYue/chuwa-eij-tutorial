@@ -79,69 +79,40 @@ public class StreamApiIntermediateOperation {
         list.stream().map(String::toUpperCase).forEach(System.out::println);
     }
 
-    @Test
-    public void testFlatMap() {
-        List<String> list = Arrays.asList("aa", "bb", "cc", "dd");
-
-        System.out.println("****** 使用map ********");
-        // flatMap(Function f) - 接收一个函数作为参数，将流中的每个值换成另外一个流，然后把所有流链接成一个流
-        // 返回的是一个stream对象
-        Stream<Stream<Character>> streamStream = list.stream().map(StreamApiIntermediateOperation::fromStringToStream);
-        streamStream.forEach(stream -> stream.forEach(System.out::println));
-
-        System.out.println("**** 使用flatMap *****");
-
-        // Stream<Stream<Character>  --> Stream<Character>
-        Stream<Character> characterStream = list.stream().flatMap(StreamApiIntermediateOperation::fromStringToStream);
-        characterStream.forEach(System.out::println);
-    }
-
-    /* 将字符串中的多个字符集合转换为对应的Stream实例 */
-    public static Stream<Character> fromStringToStream(String str) {
-        ArrayList<Character> list = new ArrayList<>();
-        for (Character c : str.toCharArray()) {
-            list.add(c);
-        }
-
-        return list.stream();
-    }
-
     /**
      * 把两个string里面的数字相加并求和。 1 + 2+ 3 + ... + 9 + 10
      */
     @Test
-    public void testFlatMap2() {
+    public void testFlatMap() {
+        // 1. 构造一对二维数组
         List<String> lists1 = Arrays.asList("1", "2", "33", "4", "5");
         List<String> lists2 = Arrays.asList("6", "7", "8", "9", "10");
         List<List<String>> listsOfStrings = new ArrayList<>();
         listsOfStrings.add(lists1);
         listsOfStrings.add(lists2);
-
         // listOfStrings是 [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]  -> [1,2,3,4,5,6,7,8,9]
         System.out.println("listsOfStrings: " + listsOfStrings);
 
-        System.out.println("****** 使用map ********");
-        // 由于map返回的是list，所以Stream里是List<Integer>
-        Stream<List<Integer>> listStream = listsOfStrings.stream().map(nums -> nums.stream().map(Integer::parseInt).collect(Collectors.toList()));
-        // 注意输出的是两个数组
-        listStream.forEach(System.out::println);
-        Stream<List<Integer>> listStream2 = listsOfStrings.stream().map(nums -> nums.stream().map(Integer::parseInt).collect(Collectors.toList()));
-        // 获取每个list里的max，然后比较两个list的max，获取真正的max
-        OptionalInt max1 = listStream2.map(list -> Collections.max(list)).mapToInt(Integer::intValue).max();
-        System.out.println(max1);
-        Stream<Stream<Integer>> streamStream = listsOfStrings.stream().map(nums -> nums.stream().map(Integer::parseInt));
-        Stream<OptionalInt> optionalIntStream = streamStream.map(stream -> stream.mapToInt(Integer::intValue).max());
-        Optional<OptionalInt> max2 = optionalIntStream.max((n1, n2) -> n1.getAsInt() - n2.getAsInt());
-        System.out.println(max2);
+        // 2. 分步骤使用flatmap找到最大值。 为了方便理解
+        System.out.println("**** 分步骤使用flatmap找到最大值 *****");
+        // 2.1 把一个二维的strign flatten为一个string stream对象。 注意flatMap里，input是list, 输出是list转换的stream对象。
+        Stream<String> stringStream = listsOfStrings.stream().flatMap(list -> list.stream());
+        // 2.1.1 如果是使用普通map，则生成的是Stream<Stream>对象
+        Stream<Stream<String>> streamStream = listsOfStrings.stream().map(list -> list.stream());
+        // 2.2 将string 转为int数组，然后找出max值，此时max()方法返回的是Optional<Integer>
+        OptionalInt max = stringStream.mapToInt(Integer::parseInt).max();
+        // 2.3 从Optional里拿出int数值。
+        int asInt = max.getAsInt();
+        System.out.println(asInt);
 
-        System.out.println("**** 使用flatMap *****");
-        Stream<Integer> integerStream = listsOfStrings.stream().flatMap(nums -> nums.stream().map(Integer::parseInt).collect(Collectors.toList()).stream());
-        System.out.println(integerStream);
-        integerStream.forEach(System.out::println);
-        Stream<Integer> integerStream2 = listsOfStrings.stream().flatMap(nums -> nums.stream().map(Integer::parseInt).collect(Collectors.toList()).stream());
-        // 2 lists is flapped to 1 list, so just call max to get the MAX
-        OptionalInt max = integerStream2.mapToInt(Integer::intValue).max();
-        System.out.println(max);
+        // 2.使用flatmap找到最大值。不分步骤。 日常工作这么写。
+        System.out.println("**** 使用flatmap找到最大值。不分步骤。 *****");
+        int asInt1 = listsOfStrings
+                .stream()
+                .flatMap(list -> list.stream())
+                .mapToInt(Integer::parseInt)
+                .max().getAsInt();
+        System.out.println(asInt1);
     }
 
     @Test
@@ -156,13 +127,14 @@ public class StreamApiIntermediateOperation {
         list2.add(5);
         list2.add(6);
 
-        list1.addAll(list2.stream()
+        // 找出list2中的偶数，并乘以10
+        List<Integer> collect = list2.stream()
                 .filter(e -> e % 2 == 0)
                 .map(e -> e * 10)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
 
-        long count = list2.stream().filter(e -> e % 2 == 0).count();
-        System.out.println(count);
+        list1.addAll(collect);
+
         System.out.println(list1);
     }
 

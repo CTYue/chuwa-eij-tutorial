@@ -71,6 +71,11 @@ public class StreamApiCreationTest {
         System.out.println("Stream object:      " + stream);
     }
 
+    /**
+     *  ######################  上面部分是重点，下面部分是非重点  ##################
+     */
+    // ----------------------  华丽分割线  ------------------------------------
+
     @Test
     public void testIterate() {
         /**
