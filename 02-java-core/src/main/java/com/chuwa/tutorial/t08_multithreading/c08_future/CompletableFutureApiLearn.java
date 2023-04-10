@@ -45,10 +45,17 @@ public class CompletableFutureApiLearn {
     /**
      * Using Static methods runAsync and supplyAsync to create a CompletableFuture
      * instance out of Runnable and Supplier functional types correspondingly.
+     *
+     * CompletableFuture.supplyAsync 有返回值 - CompletableFuture<String>
+     * CompletableFuture.runAsync（）没返回值 - CompletableFuture<Void>。参数是runnable 对象。
      */
     @Test
     public void demo02() {
 
+        /**
+         * CompletableFuture.supplyAsync() 方法返回一个 CompletableFuture<U> 对象，其中的 U 类型是 Supplier 对象的返回类型；
+         * 而 CompletableFuture.runAsync() 方法返回一个 CompletableFuture<Void> 对象，表示异步任务没有返回值。
+         */
         CompletableFuture<String> cf1 = CompletableFuture.supplyAsync(() -> {
             System.out.println(Thread.currentThread() + ": Hello1");
             return "Hello1";
@@ -87,7 +94,6 @@ public class CompletableFutureApiLearn {
     /**
      * The thenAccept method receives a Consumer(no return) and passes it the result of the computation
      */
-
     @Test
     public void demo04() {
         CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello");
