@@ -62,6 +62,11 @@ public class OptionalMainMethodTest {
 
         // remember type is not Optional, it is Employee
         Employee employee1 = Optional.ofNullable(employee).orElse(new Employee(1, "JCole", 30, 6666));
+        if (employee != null) {
+            employee1 = employee;
+        } else {
+            employee1 = new Employee(1, "JCole", 30, 6666);
+        }
         System.out.println(employee1);
     }
 
