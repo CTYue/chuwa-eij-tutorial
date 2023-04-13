@@ -20,7 +20,6 @@
         <module>01-maven-learn</module>
         <module>02-java-core</module>
         <module>03-stream-api-exercises</module>
-        <module>04-batch-processing</module>
     </modules>
 
     <properties>
