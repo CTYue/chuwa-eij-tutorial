@@ -100,15 +100,6 @@ public class StreamApiCreationTest {
         streamGenerated.forEach(System.out::println);
     }
 
-
-    @Test
-    public void testBuilder() {
-        Stream<String> streamBuilder =
-                Stream.<String>builder().add("a").add("b").add("c").build();
-        System.out.println("Stream Object:  " + streamBuilder);
-        streamBuilder.forEach(System.out::println);
-    }
-
     @Test
     public void testStreamOfPrimitives() {
         IntStream intStream = IntStream.range(1, 3);
