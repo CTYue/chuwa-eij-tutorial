@@ -197,8 +197,9 @@ SOLID 是五个面向对象编程和设计的基本原则的首字母缩略词�
 ### SRP: Single Responsibility Principle
 
 单一功能原则（Single Responsibility Principle, SRP）意味着一个类应该只有一个引起它变化的原因，即一个类只应该有一项工作。
+> https://www.educative.io/courses/grokking-the-low-level-design-interview-using-ood-principles/YQ3953D0L4n
 
-不遵守 SRP 的例子：
+#### 不遵守 SRP 的例子：
 
 ```java
 class User {
@@ -220,7 +221,7 @@ class User {
 ```
 在这个例子中，User 类负责用户信息，也负责保存和删除用户，以及打印用户信息。如果需要修改任何这些行为，都需要修改 User 类，这违反了单一职责原则。
 
-遵守 SRP 的例子：
+#### 遵守 SRP 的例子：
 
 ```java
 class User {
@@ -321,7 +322,9 @@ class MusicPlayer {
 
 开放封闭原则（Open-Closed Principle, OCP）是面向对象设计中的一项重要原则，它要求软件实体（如类、模块、函数等等）应该对扩展开放，对修改封闭。这就意味着我们的代码应该允许在不修改已有代码的情况下添加新功能。
 
-以下是一个开放封闭原则的示例：
+> https://www.educative.io/courses/grokking-the-low-level-design-interview-using-ood-principles/m7MBZv08393
+
+One might think of OCP as inheritance, but remember that inheritance is only one of the OCP techniques. We use the interface because it is open for extension and closed for modification. Therefore, OCP is also defined as polymorphic OCP.
 
 #### 不遵守 OCP 的例子：
 
@@ -391,6 +394,8 @@ class AreaCalculator {
 里氏替换原则（Liskov Substitution Principle，LSP）是面向对象设计的一个重要原则，它表述为“子类型必须能够替换掉它们的基类型”。
 
 这个原则的核心思想是，如果一个程序使用基类型的地方，都可以使用其子类型代替，而不改变程序的正确性。也就是说，子类对象能够替换父类对象，而不会导致程序出错。
+
+> https://www.educative.io/courses/grokking-the-low-level-design-interview-using-ood-principles/N0Qqxkw5ynm
 
 #### 不遵守 Liskov 替换原则的例子：
 
@@ -463,6 +468,8 @@ class BirdKeeper {
 
 接口隔离原则（Interface Segregation Principle，ISP）指的是客户端不应该被迫依赖于它不使用的接口。这个原则的目的是将臃肿的接口分解为更小的和更具体的接口，以便客户端只需要知道它们感兴趣的方法。
 
+> https://www.educative.io/courses/grokking-the-low-level-design-interview-using-ood-principles/m7g5O3xmqgA
+
 #### 不遵守 ISP 的例子：
 
 ```java
@@ -530,6 +537,8 @@ class Robot implements Workable {
 ### DIP: Dependency Inversion Principle
 
 依赖反转原则（Dependency Inversion Principle，DIP）是面向对象设计的一个重要原则，它的主要思想是依赖于抽象而不是依赖于具体。换句话说，高级模块不应该依赖于低级模块，它们都应该依赖于抽象。
+
+> https://www.educative.io/courses/grokking-the-low-level-design-interview-using-ood-principles/39lyNKQNOKn
 
 #### 不遵守 DIP 的例子：
 
