@@ -9,6 +9,19 @@ package com.chuwa.tutorial.t08_multithreading.c04_deadlock;
  *
  * 那么我们应该如何避免死锁呢？答案是：线程获取锁的顺序要一致。即严格按照先获取lockA，再获取lockB的顺序
  * @author bigo
+ * Thread-1 (add method)
+ *    |
+ *    |--- Holds LOCK_A, Waiting for LOCK_B
+ *    |
+ *    |--- value += m
+ *    |--- Sleep
+ *
+ * Thread-2 (dec method)
+ *    |
+ *    |--- Holds LOCK_B, Waiting for LOCK_A
+ *    |
+ *    |--- another -= m
+ *    |--- Sleep
  */
 public class DeadLock {
     public static void main(String[] args) throws InterruptedException {

@@ -22,7 +22,9 @@ public class JoinTest {
         try {
             System.out.println("Main thread is stopped and waiting for t thread end");
             t.join();   // main thread wait for t thread end. main thread's status is Timed Waiting.
-        } catch (InterruptedException e) {
+            //超时等待状态（timed waiting), 当线程在等待某个条件的发生并且有一个指定的超时时间时进入此状态。
+            System.out.println("Main thread continues...");
+        } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("Main stop");
