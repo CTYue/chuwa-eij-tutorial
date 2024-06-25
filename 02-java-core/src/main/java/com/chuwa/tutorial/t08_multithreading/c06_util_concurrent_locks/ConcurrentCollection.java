@@ -30,8 +30,8 @@ private static final int THREAD_COUNT = 10;
     private static final int OPERATIONS_PER_THREAD = 10;
 
     public static void main(String[] args) throws InterruptedException {
-//        ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
+        ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
+//        HashMap<Integer, Integer> map = new HashMap<>();
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_COUNT);
 
         // 启动多个线程对ConcurrentHashMap进行写操作
@@ -67,5 +67,4 @@ private static final int THREAD_COUNT = 10;
         System.out.println("Final map size: " + map.size());
         System.out.println("Expected map size: " + (THREAD_COUNT * OPERATIONS_PER_THREAD));
     }
-
 }
