@@ -20,8 +20,10 @@ public class ThreadLocalLearn {
                     try {
                         for (int j = 0; j < 5; j++) {
                             Integer beforeInt = myData.threadLocalField.get();
+//                            Integer beforeInt = myData.sharedField;
                             myData.add();
                             Integer afterInt = myData.threadLocalField.get();
+//                            Integer afterInt = myData.sharedField;
                             System.out.println(Thread.currentThread().getName() + "\t" + "beforeInt:" + beforeInt + "\t afterInt: " + afterInt);
                         }
                     } finally {
@@ -49,3 +51,11 @@ class MyData {
         threadLocalField.set(1 + threadLocalField.get());
     }
 }
+
+//class MyData {
+//    Integer sharedField = 0;
+//
+//    public void add() {
+//        sharedField++;
+//    }
+//}
