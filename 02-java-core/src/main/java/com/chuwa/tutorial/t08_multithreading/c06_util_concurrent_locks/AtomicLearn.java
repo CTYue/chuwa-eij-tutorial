@@ -9,11 +9,14 @@ import java.util.concurrent.atomic.AtomicLong;
  * @description 自己利用CAS实现
  */
 public class AtomicLearn {
-    public int incrementAndGet(AtomicInteger var) {
+    public static int incrementAndGet(AtomicInteger var) {
         int prev, next;
         do {
             prev = var.get();
             next = prev + 1;
+            //Keep looping until actual value equals to expected value.
+            //which means latest var.get() == current var.get()
+            //return false if actual value is NOT equal to expected value
         } while ( ! var.compareAndSet(prev, next));
         return next;
     }
