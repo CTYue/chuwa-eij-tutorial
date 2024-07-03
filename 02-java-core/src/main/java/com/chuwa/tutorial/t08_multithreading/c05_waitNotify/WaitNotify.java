@@ -3,6 +3,9 @@ package com.chuwa.tutorial.t08_multithreading.c05_waitNotify;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author b1go
@@ -58,20 +61,43 @@ public class WaitNotify {
 }
 
 class TaskQueue {
+    private final Lock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
+
     Queue<String> queue = new LinkedList<>();
 
-    public synchronized void addTask(String s) {
-        this.queue.add(s);
-        this.notifyAll();
-    }
-
-    public synchronized String getTask() throws InterruptedException {
-        while (queue.isEmpty()) {
-            // wait()方法必须在当前获取的锁对象上调用，这里获取的是this锁，因此调用this.wait()
-            // 调用wait()方法后，线程进入等待状态，wait()方法不会返回，直到将来某个时刻，线程从等待状态被其他线程唤醒后，wait()方法才会返回，然后，继续执行下一条语句。
-            this.wait();
+    public void addTask(String s) {
+        lock.lock();
+        try {
+            queue.add(s);
+            condition.signalAll();
+        } finally {
+            lock.unlock();
         }
+    }
+//    public synchronized void addTask(String s) {
+//        this.queue.add(s);
+//        this.notifyAll();
+//    }
 
-        return queue.remove();
+//    public synchronized String getTask() throws InterruptedException {
+//        while (queue.isEmpty()) {
+//            // wait()方法必须在当前获取的锁对象上调用，这里获取的是this锁，因此调用this.wait()
+//            // 调用wait()方法后，线程进入等待状态，wait()方法不会返回，直到将来某个时刻，线程从等待状态被其他线程唤醒后，wait()方法才会返回，然后，继续执行下一条语句。
+//            this.wait();
+//        }
+//
+//        return queue.remove();
+//    }
+    public String getTask() throws InterruptedException {
+        lock.lock();
+        try {
+            while (queue.isEmpty()) {
+                condition.await();
+            }
+            return queue.remove();
+        } finally {
+            lock.unlock();
+        }
     }
 }
