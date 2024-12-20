@@ -28,6 +28,7 @@ public class ProductClient {
         List<Product> filteredProducts = productList.stream()
                 .filter(product -> product.getStock() > 10)
                 .collect(Collectors.toList());
+        System.out.println(filteredProducts);
     }
 
     @Test
@@ -36,6 +37,7 @@ public class ProductClient {
         Set<String> uniqueCategories = productList.stream()
                 .map(Product::getCategory)
                 .collect(Collectors.toSet());
+        System.out.println(uniqueCategories);
     }
 
     @Test
@@ -44,11 +46,12 @@ public class ProductClient {
         String allProductNames = productList.stream()
                 .map(Product::getName)
                 .collect(Collectors.joining(", "));
-
+        System.out.println(allProductNames);
         // Concatenate all product names into a single string, separated by a newline character.
         String allProductNamesNewLine = productList.stream()
                 .map(Product::getName)
                 .collect(Collectors.joining("\n"));
+        System.out.println(allProductNamesNewLine);
     }
 
     @Test
@@ -56,6 +59,7 @@ public class ProductClient {
         // Count the number of products in each category.
         Map<String, Long> categoryCounts = productList.stream()
                 .collect(Collectors.groupingBy(Product::getCategory, Collectors.counting()));
+        System.out.println(categoryCounts);
     }
 
     @Test
@@ -63,6 +67,7 @@ public class ProductClient {
         // Calculate the total stock of all products.
         int totalStock = productList.stream()
                 .collect(Collectors.summingInt(Product::getStock));
+        System.out.println(totalStock);
     }
 
     @Test
@@ -70,10 +75,11 @@ public class ProductClient {
         // Group the products by category and calculate the total stock for each category.
         Map<String, Integer> categoryStock = productList.stream()
                 .collect(Collectors.groupingBy(Product::getCategory, Collectors.summingInt(Product::getStock)));
-
+        System.out.println(categoryStock);
         // Group the products by category and calculate the average price for each category.
         Map<String, Double> categoryAveragePrice = productList.stream()
                 .collect(Collectors.groupingBy(Product::getCategory, Collectors.averagingDouble(Product::getPrice)));
+        System.out.println(categoryAveragePrice);
     }
 
     @Test
@@ -81,6 +87,7 @@ public class ProductClient {
         // 给定一个Product列表，使用Stream API的maxBy()方法找出价格最高的产品。
         Optional<Product> maxPriceProduct = productList.stream()
                 .collect(Collectors.maxBy(Comparator.comparingDouble(Product::getPrice)));
+        System.out.println(maxPriceProduct);
     }
 
     @Test
@@ -88,6 +95,7 @@ public class ProductClient {
         // 给定一个Product列表，使用Stream API的partitioningBy()方法按产品价格是否高于100分组。
         Map<Boolean, List<Product>> partitionedProducts = productList.stream()
                 .collect(Collectors.partitioningBy(p -> p.getPrice() > 100));
+        System.out.println(partitionedProducts);
     }
 
     @Test
@@ -96,6 +104,7 @@ public class ProductClient {
                 .map(Product::getName)
                 .map(String::toUpperCase)
                 .collect(Collectors.toSet());
+        System.out.println(upperCaseNames);
     }
 
     @Test
