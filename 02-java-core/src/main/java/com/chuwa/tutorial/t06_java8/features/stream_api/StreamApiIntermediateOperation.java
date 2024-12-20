@@ -157,4 +157,15 @@ public class StreamApiIntermediateOperation {
         Stream<Employee> sorted = stream.sorted(Comparator.comparingInt(Employee::getAge));
         sorted.forEach(System.out::println);
     }
+
+
+    @Test
+    public void testIntermediateOperationWontWorkUntilTerminateOperations() {
+        Stream<Integer> numStream = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20).stream();
+        numStream = numStream.filter(i -> i % 2 == 0)
+                .map(i -> i * 10)
+                .peek(System.out::println);//Won't print anything b/c Intermediate operations are not executed until some terminal operation is invoked
+
+        numStream.collect(Collectors.toList()).forEach(System.out::println);
+    }
 }
