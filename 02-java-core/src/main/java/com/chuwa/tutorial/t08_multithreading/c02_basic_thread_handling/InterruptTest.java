@@ -1,5 +1,6 @@
 package com.chuwa.tutorial.t08_multithreading.c02_basic_thread_handling;
 
+import com.chuwa.tutorial.t08_multithreading.c01_creat.MyThread;
 import org.junit.Test;
 
 
@@ -33,11 +34,24 @@ public class InterruptTest {
         execute(t);
     }
 
+    @Test
+    public void demoJoin() throws InterruptedException {
+        Thread t  = new MyThread();
+        demoJoin(t);
+    }
+
     private void execute(Thread t) throws InterruptedException {
         t.start();
         Thread.sleep(2000); // 暂停2毫秒. Question, who sleep?
-        t.interrupt(); // 中断t线程. Question, who is interrupted? 一定会被成功中断么？
+//        t.interrupt(); // 中断t线程. Question, who is interrupted? 一定会被成功中断么？
         t.join(); // 等待t线程结束. Question, who is running, and who stopped?
+        System.out.println("end");
+    }
+
+    private void demoJoin(Thread t) throws InterruptedException {
+        t.start();
+        Thread.sleep(2000);
+        t.join();
         System.out.println("end");
     }
 }

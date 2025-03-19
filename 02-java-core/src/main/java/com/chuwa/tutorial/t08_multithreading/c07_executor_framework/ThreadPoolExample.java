@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 public class ThreadPoolExample {
 
     @Test
-    public void fixedThreadPool(String[] args) {
+    public void fixedThreadPool() {
         ExecutorService executorService = Executors.newFixedThreadPool(5);
 
         for (int i = 0; i < 10; i++) {
@@ -71,7 +71,7 @@ public class ThreadPoolExample {
     @Test
     public void customThreadPoolExample() {
         int corePoolSize = 5;
-        int maximumPoolSize = 5;
+        int maximumPoolSize = 10;
         long keepAliveTime = 0L;
         TimeUnit timeUnit = TimeUnit.MILLISECONDS;
         int queueCapacity = 100;
@@ -84,10 +84,11 @@ public class ThreadPoolExample {
                 new ArrayBlockingQueue<>(queueCapacity)
         );
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             int taskId = i + 1;
             executorService.submit(() ->
                     System.out.println("Task " + taskId + " is running on thread " + Thread.currentThread().getName()));
+            //return htmlToJson;
         }
 
         executorService.shutdown();

@@ -28,7 +28,7 @@ public class CompletableFutureApiLearn {
 
         executorService.submit(() -> {
             try {
-                Thread.sleep(500);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -37,6 +37,7 @@ public class CompletableFutureApiLearn {
 
         try {
             System.out.println(completableFuture.get());
+            System.out.println("main thread won't wait for the result");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,18 +58,27 @@ public class CompletableFutureApiLearn {
          * 而 CompletableFuture.runAsync() 方法返回一个 CompletableFuture<Void> 对象，表示异步任务没有返回值。
          */
         CompletableFuture<String> cf1 = CompletableFuture.supplyAsync(() -> {
-            System.out.println(Thread.currentThread() + ": Hello1");
+            try {
+                Thread.sleep(2000);
+                System.out.println(Thread.currentThread() + ": Hello2");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             return "Hello1";
         });
-        CompletableFuture<Void> cf2 = CompletableFuture.runAsync(() ->
-                System.out.println(Thread.currentThread() + ": Hello2"));
-
+        CompletableFuture<Void> cf2 = CompletableFuture.runAsync(() -> {
+                    try {
+                        Thread.sleep(1000);
+                        System.out.println(Thread.currentThread() + ": Hello2");
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                );
         try {
-            System.out.println(cf2.isDone());
-            Thread.sleep(1000);
-            System.out.println(cf2.isDone());
-
             System.out.println(cf1.get());
+            System.out.println(cf2.get());
+            System.out.println("main thread won't wait for the result");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -12,18 +12,18 @@ public class FutureExample {
         Callable<String> task = () -> {
             // 模拟长时间运行的任务
             Thread.sleep(5000);
-//            System.out.println("Printing something...");
+            System.out.println("Printing something...");
             return "Task completed";
         };
 
         // 提交任务并获取Future对象
-        Future<String> future = executorService.submit(task);
+        Future<String> resFuture = executorService.submit(task);
 
         System.out.println("Task submitted, waiting for result...");
 
         try {
             // 调用get()方法阻塞主线程，直到任务完成并返回结果
-            String result = future.get(2, TimeUnit.SECONDS);
+            String result = resFuture.get(2, TimeUnit.SECONDS);
             System.out.println("Result from task: " + result);
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();

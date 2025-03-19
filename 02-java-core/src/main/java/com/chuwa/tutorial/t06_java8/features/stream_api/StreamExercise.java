@@ -28,6 +28,8 @@ public class StreamExercise {
                 .distinct()
                 .collect(Collectors.toList());
         stringList.forEach(e -> System.out.println(e));
+        boolean res = stringList.stream().anyMatch(e -> e.equals("word"));
+        System.out.println(res);
     }
 
     @Test

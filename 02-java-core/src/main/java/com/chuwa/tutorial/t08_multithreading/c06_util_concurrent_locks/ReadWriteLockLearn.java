@@ -67,6 +67,7 @@ class Counter {
     public void inc(int index) {
         wLock.lock();
         try {
+            System.out.println("Get from counts");
             counts[index] += 1;
         } finally {
             wLock.unlock();
@@ -76,6 +77,7 @@ class Counter {
     public int[] get() {
         rLock.lock();
         try {
+            System.out.println("Get from counts");
             return Arrays.copyOf(counts, counts.length);
         } finally {
             rLock.unlock();

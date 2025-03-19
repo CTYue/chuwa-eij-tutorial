@@ -24,6 +24,7 @@ package com.chuwa.tutorial.t08_multithreading.c04_deadlock;
  *    |--- Sleep
  */
 public class DeadLock {
+    //Demo deadlock scenario
     public static void main(String[] args) throws InterruptedException {
         Thread[] ts = new Thread[] {
                 new Thread(() -> {
@@ -48,6 +49,7 @@ public class DeadLock {
         System.out.println("main end");
     }
 }
+
 
 /**
  * Locker
@@ -90,5 +92,3 @@ class Counter {
         System.out.println("value is: " + value + ", another is: " + another);
     }
 }
-
-

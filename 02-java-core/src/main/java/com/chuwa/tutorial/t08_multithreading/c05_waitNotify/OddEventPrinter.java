@@ -16,6 +16,7 @@ public class OddEventPrinter {
         PrintRunnable runnable = new PrintRunnable();
         new Thread(runnable).start();//t0
         new Thread(runnable).start();//t1
+        new Thread(runnable).start();//t2
     }
 
     static class PrintRunnable implements Runnable {
