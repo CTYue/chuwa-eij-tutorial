@@ -18,11 +18,13 @@ public class StringConstantPoolTest {
         String s1 = "Cat";
         String s2 = "Cat";
         String s3 = s1;
+        String s4 = "cat";
         Assert.assertEquals(s1, s2);
         // true
         System.out.println(s1 == s2);
         // true
         System.out.println(s1 == s3);
+        System.out.println(s1 == s4);
     }
 
     /**

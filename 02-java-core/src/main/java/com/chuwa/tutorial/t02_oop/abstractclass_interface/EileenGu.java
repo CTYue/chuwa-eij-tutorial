@@ -5,4 +5,9 @@ public class EileenGu implements Chinese, American{
     public void speak() {
         System.out.println("I is what I is");
     }
+
+    @Override
+    public void eat() {
+
+    }
 }

@@ -12,8 +12,9 @@ public class OopTest {
         People eileen = new American() {
             @Override
             public void speak() {
-                System.out.println("Speak English");
+                System.out.println("speak English");
             }
         };
+        eileen.speak();
     }
 }
