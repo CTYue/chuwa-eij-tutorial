@@ -8,20 +8,52 @@ package com.chuwa.tutorial.t04_design_pattern.builder.demo_bike;
 public class Bike {
     private String frame;
     private String seat;
+    private String brand;
+    private String model;
 
-    public String getFrame() {
-        return frame;
+    private Bike(Builder builder) {
+        this.frame = builder.frame;
+        this.seat = builder.seat;
+        this.brand = builder.brand;
+        this.model = builder.model;
     }
 
-    public void setFrame(String frame) {
-        this.frame = frame;
+    //Static Factory method, to avoid usage of "new" with builder
+    public static Builder builder(String brand, String model) {
+        return new Builder(brand, model);
     }
 
-    public String getSeat() {
-        return seat;
+    public static class Builder {
+        private String frame;
+        private String seat;
+        private String brand;
+        private String model;
+
+        public Builder(String brand, String model) {
+            this.brand = brand;
+            this.model = model;
+        }
+
+        public Builder setFrame(String frame) {
+            this.frame = frame;
+            return this;
+        }
+        public Builder setSeat(String seat) {
+            this.seat = seat;
+            return this;
+        }
+        public Bike build() {
+            return new Bike(this);
+        }
     }
 
-    public void setSeat(String seat) {
-        this.seat = seat;
+    @Override
+    public String toString() {
+        return "Bike{" +
+                "frame='" + frame + '\'' +
+                ", seat='" + seat + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                '}';
     }
 }

@@ -7,9 +7,10 @@ package com.chuwa.tutorial.t04_design_pattern.builder.demo_bike;
  */
 public class Client {
     public static void main(String[] args) {
-        Director director = new Director(new MobileBuilder());
-        Bike bike = director.construct();
-        System.out.println(bike.getFrame());
-        System.out.println(bike.getSeat());
+//        Bike bike = new Bike.Builder("BYD","Qing").setFrame("SteelFrame")
+//                    .setSeat("LeatherSeat").build();// "new' is not elegant when designing a builder
+        Bike bike = Bike.builder("BYD","Han").setFrame("SteelFrame")
+                .setSeat("LeatherSeat").build();// Elegant
+        System.out.println(bike.toString());
     }
 }
