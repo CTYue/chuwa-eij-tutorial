@@ -15,11 +15,14 @@ public class Singleton implements Serializable {
     }
 
     // define a inner static class
+    // Final: ensures INSTANCE will NOT be modified after line 20
+    // SingletonHolder method works as a helper/utility method which instantiate a single "Singleton" object
     private static class SingletonHolder {
         private static final Singleton INSTANCE = new Singleton();
     }
 
     // provide public access method
+    // this getInstance method ensures user can ONLY get the one true INSTANCE from here
     public static Singleton getInstance() {
         return SingletonHolder.INSTANCE;
     }

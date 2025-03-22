@@ -1,4 +1,8 @@
 package com.chuwa.tutorial.t02_oop.abstractclass_interface;
 
-public interface American extends People{
+interface American extends People{
+    String str = "sss";
+    public static void say() {
+
+    }
 }

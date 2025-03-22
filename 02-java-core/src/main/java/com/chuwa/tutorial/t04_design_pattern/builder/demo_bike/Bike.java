@@ -11,6 +11,13 @@ public class Bike {
     private String brand;
     private String model;
 
+    public Bike(String frame, String seat, String brand, String model) {
+        this.frame = frame;
+        this.seat = seat;
+        this.brand = brand;
+        this.model = model;
+    }
+
     private Bike(Builder builder) {
         this.frame = builder.frame;
         this.seat = builder.seat;
@@ -24,10 +31,10 @@ public class Bike {
     }
 
     public static class Builder {
-        private String frame;
         private String seat;
-        private String brand;
         private String model;
+        private String frame;
+        private String brand;
 
         public Builder(String brand, String model) {
             this.brand = brand;

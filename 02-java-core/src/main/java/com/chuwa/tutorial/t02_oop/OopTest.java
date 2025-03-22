@@ -1,20 +1,23 @@
 package com.chuwa.tutorial.t02_oop;
 
-import com.chuwa.tutorial.t02_oop.abstractclass_interface.American;
-import com.chuwa.tutorial.t02_oop.abstractclass_interface.AmericanAthlete;
-import com.chuwa.tutorial.t02_oop.abstractclass_interface.EileenGu;
-import com.chuwa.tutorial.t02_oop.abstractclass_interface.People;
+import com.chuwa.tutorial.t02_oop.abstractclass_interface.*;
 import org.junit.Test;
 
 public class OopTest {
     @Test
     public void test() {
-        People eileen = new American() {
+        //Anonymous class implementation
+        AmericanAthlete eileen = new AmericanAthlete() {
+            @Override
+            public void say() {
+                super.say();
+            }
+
             @Override
             public void speak() {
-                System.out.println("speak English");
+                super.speak();
             }
         };
-        eileen.speak();
+
     }
 }
