@@ -1,5 +1,7 @@
 package com.chuwa.tutorial.t06_java8.features.method_reference;
 
+import com.chuwa.tutorial.t02_oop.abstractclass_interface.People;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -24,6 +26,10 @@ public class MethodReferenceExample {
 
         // 使用静态方法引用
         people.sort(Person::compareByName);
+        for(Person p : people)
+            System.out.println(p);
+
+        people.forEach(System.out::println);
 
         // 2. 实例方法引用（特定对象的实例方法）
         Comparator<Person> byAgeComparator = Comparator.comparingInt(Person::getAge);

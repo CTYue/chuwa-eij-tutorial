@@ -25,6 +25,7 @@ public class EnumClient {
 //            System.out.println(s.name());
 //            System.out.println(s.ordinal());
             System.out.println(s.getValue());
+            System.out.println(s.ordinal());
         }
     }
 

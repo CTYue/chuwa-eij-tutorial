@@ -2,6 +2,15 @@ package com.chuwa.tutorial.t03_exception_handling_Enum;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.FileSystemException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author b1go
  * @date 6/12/22 6:00 PM
@@ -144,5 +153,35 @@ public class ExceptionCases {
         int[] ints = ExceptionCases.method2();
         System.out.println(ints[0]);
     }
+    //NPE: Null pointer exception
+    //Index Out of bound
+    @Test
+    public void uncheckExceptionTest() {
+        List arr = new ArrayList();
+        System.out.println(arr.get(1));
+    }
 
+    //Throws keyword throws current exception to the calling method
+    //Try-catch resolves exception locally
+    @Test
+    public void checkExceptionThrowsTest() throws Exception {
+        String filePath = "~/Download/data.json"; // replace with your JSON file path
+            String jsonContent = new String(Files.readAllBytes(Paths.get(filePath)));
+            System.out.println("JSON content:");
+            System.out.println(jsonContent);
+            throw new RuntimeException();
+        }
+    @Test
+    public void checkedExceptionTryCatchTest()  {
+        String filePath = "~/Download/data.json"; // replace with your JSON file path
+        try{
+            String jsonContent = new String(Files.readAllBytes(Paths.get(filePath)));
+            System.out.println("JSON content:");
+            System.out.println(jsonContent);
+        }   catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("finally executed");
+        }
+    }
 }

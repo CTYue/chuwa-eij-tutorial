@@ -24,7 +24,9 @@ class OptionalTest {
     void testOfNullable() {
         String value = null;
         Optional<String> optional = Optional.ofNullable(value);
+//        String str = String.valueOf(1);
         assertFalse(optional.isPresent());
+        System.out.println(optional.orElseGet(()-> "unknown"));// if(value == null) {value="unknown";system.out.println(value)}
     }
 
     @Test

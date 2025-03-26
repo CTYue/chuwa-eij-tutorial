@@ -32,7 +32,7 @@ public class LambdaLearn {
             public String aMethod(String string) {
                 return string + " from Foo";
             }
-        };
+        };//anonymous class implementation
 
         String hello = fooByIC.aMethod("hello");
         System.out.println(hello);
@@ -42,7 +42,7 @@ public class LambdaLearn {
     public void lambdaFoo() {
         // Foo.aMethod() 是abstract method,缺少method body. lambda 提供method body.
         // 比Anonymous class 简洁很多。
-        Foo foo = parameter -> parameter + " from Foo";
+        Foo foo = parameter -> parameter + " from Foo";//1. create a new class which implements Foo, 2. override the only abstract method in Foo
 
         String hello = foo.aMethod("hello");
         System.out.println(hello);
@@ -60,7 +60,7 @@ public class LambdaLearn {
     @Test
     public void testFinal() {
         final String localVariable = "Local";
-        Foo foo = parameter -> {
+        Foo foo = (parameter) -> {
             return parameter + " " + localVariable;
         };
 
@@ -89,7 +89,6 @@ public class LambdaLearn {
     public void testFinal21() {
         String localVariable = "Local";
         localVariable = "LOCAL"; // 新的内存地址
-
         Foo foo = parameter -> {
 //            return parameter + " " + localVariable;
             return parameter;
@@ -127,4 +126,5 @@ public class LambdaLearn {
 
         System.out.println(foo.aMethod("hello"));
     }
+
 }

@@ -111,4 +111,10 @@ public class StreamApiCreationTest {
         System.out.println("Stream Object:  " + longStream);
         longStream.forEach(System.out::println);
     }
+
+    @Test
+    public void testForEach() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+        list.forEach(System.out::println);
+    }
 }
