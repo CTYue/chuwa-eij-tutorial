@@ -6,6 +6,8 @@ package com.chuwa.tutorial.t08_multithreading.c03_syncronized;
  * @description 用object当锁，
  * 不同thread用不同锁去访问同一变量，会失效。
  */
+// 1. Block shared resource being written by multiple threads at the same time
+// 2. Coordinate threads when they want to write to the same shared resource
 public class SynchronizedThreads {
     public static void main(String[] args) throws InterruptedException {
         Thread[] ts = new Thread[]{
@@ -44,6 +46,7 @@ class AddStudentThread extends Thread {
             synchronized (Counter.LOCK_STUDENT) {
                 Counter.studentCount += 1;
             }
+//            Counter.studentCount += 1;
         }
     }
 }
@@ -55,6 +58,7 @@ class DecStudentThread extends Thread {
             synchronized (Counter.LOCK_STUDENT) {
                 Counter.studentCount -= 1;
             }
+//            Counter.studentCount -= 1;
         }
     }
 }
@@ -66,6 +70,7 @@ class AddTeacherThread extends Thread {
             synchronized (Counter.LOCK_TEACHER) {
                 Counter.teacherCount += 1;
             }
+//            Counter.teacherCount += 1;
         }
     }
 }
@@ -77,6 +82,7 @@ class DecTeacherThread extends Thread {
             synchronized (Counter.LOCK_TEACHER) {
                 Counter.teacherCount -= 1;
             }
+//            Counter.teacherCount -= 1;
         }
     }
 }

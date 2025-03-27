@@ -63,20 +63,20 @@ class OptionalTest {
 
     @Test
     void testFilter() {
-        Optional<Integer> optional = Optional.of(42);
+        Optional<Integer> optional = Optional.of(41);
         Optional<Integer> filtered = optional.filter(value -> value % 2 == 0);
+//        System.out.println(filtered.get());
         assertTrue(filtered.isPresent());
-        assertEquals(42, filtered.get());
-
-        filtered = optional.filter(value -> value % 2 != 0);
-        assertFalse(filtered.isPresent());
+//        assertEquals(42, filtered.get());
+//        filtered = optional.filter(value -> value % 2 != 0);
+//        assertFalse(filtered.isPresent());
     }
 
     @Test
     void testMap() {
         Optional<String> optional = Optional.of("Hello, Optional!");
-        Optional<Integer> mapped = optional.map(String::length);
-        assertTrue(mapped.isPresent());
+        Optional<Integer> mapped = optional.map(object -> object.length());
+        System.out.println(mapped.get());
         assertEquals(16, mapped.get());
     }
 

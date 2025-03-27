@@ -43,8 +43,8 @@ public class StreamApiIntermediateOperation {
 
         // 获取员工姓名长度大于3的员工姓名
         List<Employee> employees = EmployeeData.getEmployees();
-        Stream<String> nameStream = employees.stream().map(Employee::getName);
-        nameStream.filter(name -> name.length() > 6).forEach(System.out::println);
+        Stream<String> nameStream = employees.stream().map(employee -> employee.getName());
+        nameStream.filter(name -> name.length() > 10).forEach(System.out::println);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class StreamApiIntermediateOperation {
     public void testMap() {
         // map(Function f) - 接收一个函数作为参数，将元素转换成其它形式或提取信息，该函数会被
         List<String> list = Arrays.asList("aa", "bb", "cc", "dd");
-        list.stream().map(String::toUpperCase).forEach(System.out::println);
+        list.stream().map(str -> str.toUpperCase()).forEach(System.out::println);
     }
 
     /**
@@ -90,7 +90,7 @@ public class StreamApiIntermediateOperation {
         List<List<String>> listsOfStrings = new ArrayList<>();
         listsOfStrings.add(lists1);
         listsOfStrings.add(lists2);
-        // listOfStrings是 [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]  -> [1,2,3,4,5,6,7,8,9]
+        // listOfStrings是 [[1, 2, 33, 4, 5], [6, 7, 8, 9, 10]]  -> [1,2,3,4,5,6,7,8,9]
         System.out.println("listsOfStrings: " + listsOfStrings);
 
         // 2. 分步骤使用flatmap找到最大值。 为了方便理解

@@ -33,6 +33,18 @@ public class ShoppingCartAnswer {
      * @return
      */
     public static double getTotalPrice(Optional<Customer> customer) {
+
+//        if(customer.isPresent() && !customer.isEmpty()) {
+//            if(customer.get().getShoppingCart() != null) {
+//                if(customer.get().getShoppingCart().getItems() != null) {
+//                    List<Item> items = customer.get().getShoppingCart().getItems();
+//                    for(Item item : items) {
+//                        //TODO
+//                    }
+//                }
+//            }
+//        }
+
         return customer.map(Customer::getShoppingCart)
                 .map(ShoppingCart::getItems)
                 .filter(items -> !items.isEmpty())

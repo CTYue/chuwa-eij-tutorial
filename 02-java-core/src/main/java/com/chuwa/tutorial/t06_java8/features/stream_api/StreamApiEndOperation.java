@@ -114,10 +114,12 @@ public class StreamApiEndOperation {
                 .min(Comparator.comparingInt(Employee::getId));
         System.out.println("min age is : " + min);
 
-        EMPLOYEES.stream()
+        Stream s = EMPLOYEES.stream()
                 .filter(e -> e.getAge() > 40)
-                .map(e -> e.getName() + " ： OLD PPL")
-                .forEach(System.out::println);
+                .map(e -> e.getName() + " ： OLD PPL");
+
+        //TODO
+//        s.map();
 
         List<String> collect = EMPLOYEES.stream()
                 .filter(e -> e.getAge() > 40).map(e -> e.getName() + " ： OLD PPL")
