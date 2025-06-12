@@ -14,12 +14,15 @@ public class Client {
         System.out.println("Area of the Circle: " + shape[0].getArea());
         System.out.println("Area of the Rectangle: " + shape[1].getArea());
     }
+    //Method signature: method identifier
+    //Java method signature = method name + number of parameters + type of parameters (parameter list)
+    //Overloading
+    public static int add(int a, int b) {
+        return a + b;
+    }
 
-//    public int add(int a, int b) {
-//        return a + b;
-//    }
-//
-//    public String add(int a, int b) {
-//        return "a + b";
-//    }
+    //Overloading
+    public static int add(String a, int b) {
+        return b;
+    }
 }
