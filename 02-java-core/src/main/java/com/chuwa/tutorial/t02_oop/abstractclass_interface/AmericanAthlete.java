@@ -6,6 +6,11 @@ public abstract class AmericanAthlete implements American{
     }
 
     public void speak(){
-        return;
+        System.out.println("I speak English");
+    }
+
+    @Override
+    public void speakEnglish(){
+        System.out.println("I speak English and Spanish");
     }
 }

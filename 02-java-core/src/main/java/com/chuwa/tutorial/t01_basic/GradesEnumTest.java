@@ -5,6 +5,7 @@ import org.junit.Test;
 public class GradesEnumTest {
     @Test
     public void testGradesEnum() {
-        System.out.println(Grades.fromScore(90));
+        System.out.println(Grades.fromScore(75));
+        System.out.println(Grades.A);
     }
 }
