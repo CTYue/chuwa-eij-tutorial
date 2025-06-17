@@ -26,8 +26,8 @@ public class Bike {
     }
 
     //Static Factory method, to avoid usage of "new" with builder
-    public static Builder builder(String brand, String model) {
-        return new Builder(brand, model);
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
@@ -36,9 +36,14 @@ public class Bike {
         private String frame;
         private String brand;
 
-        public Builder(String brand, String model) {
-            this.brand = brand;
+        public Builder setModel(String model) {
             this.model = model;
+            return this;
+
+        }
+        public Builder setBrand(String brand) {
+            this.brand = brand;
+            return this;
         }
 
         public Builder setFrame(String frame) {
