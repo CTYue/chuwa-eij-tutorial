@@ -9,7 +9,7 @@ public class Client {
     public static void main(String[] args) {
 //        DessertFactory factory = new ItalyDessertFactory();
         DessertFactory factory = new AmericanDessertFactory();
-        Coffee coffee = factory.createCoffee();
+        Coffee coffee = factory.createCoffee();//De-coupling: decouples wanted-types with concrete implementation
         Dessert dessert = factory.createDessert();
 
         System.out.println(coffee.getName());
